@@ -20,6 +20,17 @@ tool["Bekaboo/dropbar.nvim"] = {
 		"nvim-telescope/telescope-fzf-native.nvim",
 	},
 }
+tool["okuuva/auto-save.nvim"] = {
+	lazy = true,
+	cmd = "ASToggle", -- optional for lazy loading on command
+	event = { "InsertLeave" }, -- optional for lazy loading on trigger events
+	opts = {},
+}
+-- tool["neo451/jieba.nvim"] = {
+-- 	lazy = false,
+-- 	dependencies = { "noearc/jieba-lua" },
+-- 	opts = {},
+-- }
 tool["nvim-tree/nvim-tree.lua"] = {
 	lazy = true,
 	cmd = {
