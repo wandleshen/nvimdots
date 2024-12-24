@@ -35,6 +35,7 @@ return function()
 			-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 			console = "integratedTerminal",
 			program = utils.input_file_path(),
+			args = utils.input_args(),
 			pythonPath = function()
 				local venv = vim.env.CONDA_PREFIX
 				if venv then
@@ -52,6 +53,7 @@ return function()
 			-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 			console = "integratedTerminal",
 			program = utils.input_file_path(),
+			args = utils.input_args(),
 			pythonPath = function()
 				-- Prefer the venv that is defined by the designated environment variable.
 				local cwd, venv = vim.fn.getcwd(), os.getenv("VIRTUAL_ENV")

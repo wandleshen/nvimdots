@@ -244,7 +244,6 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("debug: Open REPL"),
-
 		--- Plugin: CodeCompanion and edgy
 		["n|<leader>cs"] = map_callback(function()
 				_select_chat_model()
@@ -266,6 +265,18 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("tool: Add selection to CodeCompanion Chat"),
+		["n|<leader>dp"] = map_callback(function()
+				require("dap").up()
+			end)
+			:with_noremap()
+			:with_silent()
+			:with_desc("debug: Stack up"),
+		["n|<leader>dn"] = map_callback(function()
+				require("dap").down()
+			end)
+			:with_noremap()
+			:with_silent()
+			:with_desc("debug: Stack down"),
 	},
 }
 
