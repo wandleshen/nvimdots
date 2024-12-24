@@ -210,6 +210,18 @@ local mappings = {
 			:with_noremap()
 			:with_silent()
 			:with_desc("debug: Open REPL"),
+		["n|<leader>dp"] = map_callback(function()
+				require("dap").up()
+			end)
+			:with_noremap()
+			:with_silent()
+			:with_desc("debug: Stack up"),
+		["n|<leader>dn"] = map_callback(function()
+				require("dap").down()
+			end)
+			:with_noremap()
+			:with_silent()
+			:with_desc("debug: Stack down"),
 	},
 }
 
