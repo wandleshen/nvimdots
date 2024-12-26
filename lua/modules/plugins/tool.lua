@@ -20,16 +20,16 @@ tool["Bekaboo/dropbar.nvim"] = {
 	},
 }
 tool["okuuva/auto-save.nvim"] = {
-	lazy = false,
+	lazy = true,
 	cmd = "ASToggle", -- optional for lazy loading on command
-	event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+	event = { "InsertLeave" }, -- optional for lazy loading on trigger events
 	opts = {},
 }
-tool["neo451/jieba.nvim"] = {
-	lazy = false,
-	dependencies = { "noearc/jieba-lua" },
-	opts = {},
-}
+-- tool["neo451/jieba.nvim"] = {
+-- 	lazy = false,
+-- 	dependencies = { "noearc/jieba-lua" },
+-- 	opts = {},
+-- }
 tool["nvim-tree/nvim-tree.lua"] = {
 	lazy = true,
 	cmd = {

@@ -46,4 +46,9 @@ lang["chrisbra/csv.vim"] = {
 	lazy = true,
 	ft = "csv",
 }
+lang["chomosuke/typst-preview.nvim"] = {
+	lazy = true,
+	ft = "typst",
+	opts = {},
+}
 return lang

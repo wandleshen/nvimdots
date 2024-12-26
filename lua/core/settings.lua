@@ -115,6 +115,7 @@ settings["lsp_deps"] = {
 	"lua_ls",
 	"pylsp",
 	"gopls",
+	"tinymist",
 }
 
 -- Set the general-purpose servers that will be installed during bootstrap here.
