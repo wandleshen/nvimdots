@@ -6,10 +6,10 @@ return function()
 
 	dap.adapters.codelldb = {
 		type = "server",
-		port = "${port}",
+		port = "13000",
 		executable = {
 			command = vim.fn.exepath("codelldb"), -- Find codelldb on $PATH
-			args = { "--port", "${port}" },
+			args = { "--port", "13000" },
 			detached = is_windows and false or true,
 		},
 	}
