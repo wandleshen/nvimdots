@@ -22,8 +22,15 @@ tool["Bekaboo/dropbar.nvim"] = {
 tool["okuuva/auto-save.nvim"] = {
 	lazy = true,
 	cmd = "ASToggle", -- optional for lazy loading on command
-	event = { "InsertLeave" }, -- optional for lazy loading on trigger events
-	opts = {},
+	event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+	opts = {
+		trigger_events = {
+			immediate_save = { "BufLeave", "FocusLost" },
+			defer_save = { "InsertLeave", "TextChanged", "CursorHold" },
+			cancel_deferred_save = { "InsertEnter", "CursorMoved" },
+		},
+		debounce_delay = 3000,
+	},
 }
 -- tool["neo451/jieba.nvim"] = {
 -- 	lazy = false,
