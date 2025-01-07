@@ -115,7 +115,7 @@ settings["lsp_deps"] = {
 	"lua_ls",
 	"pylsp",
 	"gopls",
-	"tinymist",
+	"omnisharp",
 }
 
 -- Set the general-purpose servers that will be installed during bootstrap here.
@@ -151,6 +151,7 @@ settings["treesitter_deps"] = {
 	"bash",
 	"c",
 	"cpp",
+	"c_sharp",
 	"css",
 	"go",
 	"gomod",
