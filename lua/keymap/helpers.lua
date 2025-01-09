@@ -95,8 +95,13 @@ _G._async_compile_and_debug = function()
 	local file_ext = vim.fn.expand("%:e")
 	local file_path = vim.fn.expand("%:p")
 	local out_name = vim.fn.expand("%:p:h") .. "/" .. vim.fn.expand("%:t:r") .. ".out"
+	local workspace = vim.fn.getcwd()
+	local cmake_file = vim.fn.filereadable(workspace .. "/" .. "CMakeLists.txt")
 	local compile_cmd
-	if file_ext == "cpp" or file_ext == "cc" then
+	if (file_ext == "cpp" or file_ext == "cc") and cmake_file then
+		compile_cmd = string.format("cd %s && ninja -j 10", workspace .. "/build")
+		out_name = workspace .. "/build/{project_name}"
+	elseif file_ext == "cpp" or file_ext == "cc" then
 		compile_cmd = string.format("g++ -g %s -o %s", file_path, out_name)
 	elseif file_ext == "c" then
 		compile_cmd = string.format("gcc -g %s -o %s", file_path, out_name)
