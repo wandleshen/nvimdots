@@ -20,6 +20,25 @@ tool["Bekaboo/dropbar.nvim"] = {
 		"nvim-telescope/telescope-fzf-native.nvim",
 	},
 }
+tool["okuuva/auto-save.nvim"] = {
+	lazy = true,
+	cmd = "ASToggle", -- optional for lazy loading on command
+	event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+	opts = {
+		trigger_events = {
+			immediate_save = { "FocusLost", "BufLeave" },
+			defer_save = { "CursorHold", "TextChanged", "InsertLeave" },
+			cancel_deferred_save = { "CursorMoved", "CursorHoldI", "InsertEnter" },
+		},
+		debounce_delay = 1500,
+		write_all_buffers = true,
+	},
+}
+-- tool["neo451/jieba.nvim"] = {
+-- 	lazy = false,
+-- 	dependencies = { "noearc/jieba-lua" },
+-- 	opts = {},
+-- }
 tool["nvim-tree/nvim-tree.lua"] = {
 	lazy = true,
 	cmd = {

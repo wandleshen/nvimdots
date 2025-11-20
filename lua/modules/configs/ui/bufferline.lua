@@ -1,6 +1,15 @@
 return function()
 	local icons = { ui = require("modules.utils.icons").get("ui") }
+	local bufferline = require("bufferline")
 
+	vim.keymap.set("n", "ZZ", function()
+		if vim.bo.modified then
+			vim.cmd.write()
+		end
+		local buf = vim.fn.bufnr()
+		bufferline.cycle(-1)
+		vim.cmd.bdelete(buf)
+	end)
 	local opts = {
 		options = {
 			always_show_bufferline = true,

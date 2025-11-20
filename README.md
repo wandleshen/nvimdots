@@ -55,9 +55,9 @@ Branch info:
 | Branch | Supported Neovim version |
 | :----: | :----------------------: |
 |  main  |     nvim 0.11 stable     |
-|  0.12  |    nvim 0.12 nightly     |
-|  0.10  |        nvim 0.10         |
-|  0.9   |         nvim 0.9         |
+|  0.12  |    nvim 0.12 nightly    |
+|  0.10  |        nvim 0.10        |
+|  0.9  |         nvim 0.9         |
 
 </div>
 
@@ -83,7 +83,7 @@ Simply run the following interactive bootstrap command, and you should be all se
 - **Windows** _(Note: This script REQUIRES `pwsh` > `v7.1`)_
 
 ```pwsh
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/wandleshen/nvimdots/HEAD/scripts/install.ps1'))
 ```
 
 - **\*nix**
