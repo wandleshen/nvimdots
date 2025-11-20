@@ -73,7 +73,9 @@ end
 
 local shell_config = function()
 	if global.is_windows then
-		if not (vim.fn.executable("pwsh") == 1 or vim.fn.executable("powershell") == 1) then
+		if
+			not (vim.fn.executable("nu") == 1 or vim.fn.executable("pwsh") == 1 or vim.fn.executable("powershell") == 1)
+		then
 			vim.notify(
 				[[
 Failed to setup terminal config
@@ -88,15 +90,25 @@ You're recommended to install PowerShell for better experience.]],
 			return
 		end
 
-		local basecmd = "-NoLogo -MTA -ExecutionPolicy RemoteSigned"
-		local ctrlcmd = "-Command [console]::InputEncoding = [console]::OutputEncoding = [System.Text.Encoding]::UTF8"
 		local set_opts = vim.api.nvim_set_option_value
-		set_opts("shell", vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell", {})
-		set_opts("shellcmdflag", string.format("%s %s;", basecmd, ctrlcmd), {})
-		set_opts("shellredir", "-RedirectStandardOutput %s -NoNewWindow -Wait", {})
-		set_opts("shellpipe", "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode", {})
-		set_opts("shellquote", "", {})
-		set_opts("shellxquote", "", {})
+		if vim.fn.executable("nu") == 1 then
+			set_opts("shell", "nu", {}) -- 指定使用 nu 作为 shell
+			set_opts("shellcmdflag", "-c", {}) -- nushell 使用 -c 执行命令字符串
+			set_opts("shellpipe", "| save --force %s; exit $env.LAST_EXIT_CODE", {}) -- 合并流并保存输出
+			set_opts("shellredir", "| save --force %s; exit $env.LAST_EXIT_CODE", {}) -- 单命令重定向
+			set_opts("shellquote", "", {}) -- nushell 不需要额外引号包裹
+			set_opts("shellxquote", "", {}) -- 不需要额外层级引号
+		else
+			local basecmd = "-NoLogo -MTA -ExecutionPolicy RemoteSigned"
+			local ctrlcmd =
+				"-Command [console]::InputEncoding = [console]::OutputEncoding = [System.Text.Encoding]::UTF8"
+			set_opts("shell", vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell", {})
+			set_opts("shellcmdflag", string.format("%s %s;", basecmd, ctrlcmd), {})
+			set_opts("shellredir", "-RedirectStandardOutput %s -NoNewWindow -Wait", {})
+			set_opts("shellpipe", "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode", {})
+			set_opts("shellquote", "", {})
+			set_opts("shellxquote", "", {})
+		end
 	end
 end
 
