@@ -100,6 +100,15 @@ if settings.use_chat then
 			{ "ravitemer/codecompanion-history.nvim" },
 		},
 	}
+	tool["echasnovski/mini.diff"] = {
+		lazy = true,
+		config = function()
+			local diff = require("mini.diff")
+			diff.setup({
+				source = diff.gen_source.none(),
+			})
+		end,
+	}
 end
 -- Needs `fzf` installed and in $PATH
 tool["ibhagwan/fzf-lua"] = {

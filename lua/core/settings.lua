@@ -121,7 +121,6 @@ settings["lsp_deps"] = {
 	"lua_ls",
 	"pylsp",
 	"gopls",
-	"omnisharp",
 }
 
 -- General-purpose sources for none-ls to install during bootstrap.
@@ -153,7 +152,6 @@ settings["treesitter_deps"] = {
 	"bash",
 	"c",
 	"cpp",
-	"c_sharp",
 	"css",
 	"go",
 	"gomod",
@@ -234,7 +232,7 @@ settings["use_chat"] = true
 
 -- Set the language to use for AI chat response here.
 --- @type string
-settings["chat_lang"] = "English"
+settings["chat_lang"] = "Chinese"
 
 -- Set environment variable here to read API key for AI chat.
 -- or you can set it to a command that reads the API key from your password manager.
@@ -250,7 +248,8 @@ settings["chat_api_key"] = "CODE_COMPANION_KEY"
 --- @type string[]
 settings["chat_models"] = {
 	-- free models
-	"moonshotai/kimi-k2:free", -- default
+	"x-ai/grok-4.1-fast", -- default
+	"moonshotai/kimi-k2:free",
 	"qwen/qwen3-coder:free",
 	"deepseek/deepseek-chat-v3-0324:free",
 	"deepseek/deepseek-r1:free",

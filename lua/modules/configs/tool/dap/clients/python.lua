@@ -39,7 +39,7 @@ return function()
 			pythonPath = function()
 				local venv = vim.env.CONDA_PREFIX
 				if venv then
-					return is_windows and venv .. "/Scripts/pythonw.exe" or venv .. "/bin/python"
+					return is_windows and venv .. "/pythonw.exe" or venv .. "/bin/python"
 				else
 					return is_windows and "pythonw.exe" or "python3"
 				end
