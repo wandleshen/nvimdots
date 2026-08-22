@@ -2,8 +2,19 @@ local completion = {}
 local settings = require("core.settings")
 
 local edit_prediction_source = settings["edit-prediction-source"] or settings.edit_prediction_source
+local codecompanion_adapter = settings["codecompanion-adapter"] or settings.codecompanion_adapter
 local use_copilot_prediction = settings.use_copilot and edit_prediction_source == "copilot"
 local use_minuet_prediction = edit_prediction_source == "oai-compatible"
+local use_copilot_plugin = settings.use_copilot
+	and (use_copilot_prediction or codecompanion_adapter == "copilot")
+
+completion["zbirenbaum/copilot.lua"] = {
+	lazy = true,
+	cond = use_copilot_plugin,
+	cmd = "Copilot",
+	event = use_copilot_prediction and "InsertEnter" or nil,
+	config = require("completion.copilot"),
+}
 
 completion["mason-org/mason.nvim"] = {
 	lazy = true,
@@ -79,16 +90,7 @@ completion["saghen/blink.cmp"] = {
 		{
 			"fang2hou/blink-copilot",
 			cond = use_copilot_prediction,
-			dependencies = {
-				{
-					"zbirenbaum/copilot.lua",
-					lazy = true,
-					cond = use_copilot_prediction,
-					cmd = "Copilot",
-					event = "InsertEnter",
-					config = require("completion.copilot"),
-				},
-			},
+			dependencies = "zbirenbaum/copilot.lua",
 		},
 	},
 	opts_extend = { "sources.default" },
